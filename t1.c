@@ -30,14 +30,15 @@ void makeset(const char* s){
     int i = hash(s);
     // TODO: Initialize a set
     ds[i].parent = i;
-    ds[i].s = malloc(sizeof(char)*4);
-    strcpy(ds[i].s,s);
+    ds[i].s = s;
 }
 
 inline void static init(const char* s) {
     int i = hash(s);
     if (!set[i]) {
-        makeset(s);
+        char *p = malloc(sizeof(char)*4);
+        for(int j=0;j<4;j++)p[j] = s[j];
+        makeset(p);
         set[i] = 1;
     }
 }
@@ -67,7 +68,7 @@ bool stringcompare(const char *a, const char *b) {
     int A = strlen(a);
     int B = strlen(b);
     int max = A;
-    char *a_now = malloc(sizeof(char)*(4));
+    char *a_now = malloc(sizeof(char)*4);
     char *b_now = malloc(sizeof(char)*4);
     if(A < B)max = B;
     for(int i = 0;i < B;i+=4){

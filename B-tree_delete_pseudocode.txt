@@ -1,81 +1,81 @@
 Delete(x,k):
     if x is leaf
-	    for i = 1 to x.n
-		    if x.key.i = k
-			    delete x.key.i in x
-                x.n--
-		    end
-	    end
+    	for i = 1 to x.n
+		if x.key.i = k
+			delete x.key.i in x
+                	x.n--
+		end
+	end
     else
-	    for i = 1 to x.n
-		    if x.key.i = k
-			    if x.key.i.left_child.n > t-1
-				    k_new = x.key.i.left_child.key.n
-				    Delete(x.left_child,k_new)
-				    x.key.i = k_new
-			    else if x.key.i.right_child.n > t-1
-                    k_new = x.key.i.right_child.key.1
-				    Delete(x.key.i.right_child,k_new)
-				    x.key.i = k_new
-			    else
-				    if i < x.n
-				        x.key.i.left_child = merge(x.key.i.left_child,x.key.i,x.key.i.rightt_child)
-                        x.key.i+1.left_child = x.key.i.left_child
+	for i = 1 to x.n
+		if x.key.i = k
+			if x.key.i.left_child.n > t-1
+				k_new = x.key.i.left_child.key.n
+				Delete(x.left_child,k_new)
+				x.key.i = k_new
+			else if x.key.i.right_child.n > t-1
+				k_new = x.key.i.right_child.key.1
+				Delete(x.key.i.right_child,k_new)
+				x.key.i = k_new
+			else
+				if i < x.n
+					x.key.i.left_child = merge(x.key.i.left_child,x.key.i,x.key.i.rightt_child)
+					x.key.i+1.left_child = x.key.i.left_child
 				        delete x.key.i in x
-                        x.n--
+					x.n--
 				        Delete(x.key.i+1.left_child,k)
-                    else if i = x.n
-                        x.key.n.right_child = merge(x.key.n.left_child,x.key.n,x.key.n.right_child)
-                        x.key.n-1.right_child = x.key.n.right_child
-                        delete x.key.n in x
-                        x.n--
-                        Delete(x.key.n-1.right_child,k)
-                    end
-                end
-		    else if k < x.key.i or k > x.key.n
-                if i < x.n
-                    x.c = x.key.i.left_child 
-                else if k > x.key.n
-                    x.c = x.key.n.right_child
-                end
-			    if x.c.n = t-1
-                    rs = x.c.right_sibling
-                    ls = x.c.left_sibling
-				    if rs.n > t-1 and rs != NIL
-                        swap = x.key.i    
-                        x.key.i = rs.key.1
-                        rs.n--
-                        x.c.key.n++
-                        x.c.key.n+1 = swap
-                        Delete(x.c,k)
-                    else if ls.n > t-1 and ls != NIL
-                        swap = x.key.i
-                        x.key.i = ls.key.n
-                        ls.n--
-                        x.c.key.n++
-                        x.c.key.n+1 = swap
-                        Delete(x.c,k)
-                    else 
-                        if rs == NIL 
-                            x.key.i.right_child = merge(x.c,x.key.i,rs)
-                            x.key.i+1.right_child = x.key.i.right_child
-                            delete x.key.i in x
-                            x.n--
-                            Delete(x.c,k)
-                        else 
-                            x.key.i.left_child = merge(x.c,x.key.i,rs)
-                            x.key.i-1.left_child = x.key.i.left_child
-                            delete x.key.i in x
-                            x.n--
-                            Delete(x.c,k)
-                        end
-                    end
-                else
-                    Delete(x.c,k)
-                end
-            end
-        end
-    end
+				else if i = x.n
+					x.key.n.right_child = merge(x.key.n.left_child,x.key.n,x.key.n.right_child)
+					x.key.n-1.right_child = x.key.n.right_child
+					delete x.key.n in x
+					x.n--
+					Delete(x.key.n-1.right_child,k)
+				end
+			end
+		else if k < x.key.i or k > x.key.n
+			if i < x.n
+				x.c = x.key.i.left_child 
+			else if k > x.key.n
+				x.c = x.key.n.right_child
+			end
+			if x.c.n = t-1
+				rs = x.c.right_sibling
+				ls = x.c.left_sibling
+				if rs.n > t-1 and rs != NIL
+					swap = x.key.i    
+					x.key.i = rs.key.1
+					rs.n--
+					x.c.key.n++
+					x.c.key.n+1 = swap
+					Delete(x.c,k)
+				else if ls.n > t-1 and ls != NIL
+					swap = x.key.i
+					x.key.i = ls.key.n
+					ls.n--
+					x.c.key.n++
+					x.c.key.n+1 = swap
+					Delete(x.c,k)
+				else 
+					if rs == NIL 
+						x.key.i.right_child = merge(x.c,x.key.i,rs)
+						x.key.i+1.right_child = x.key.i.right_child
+						delete x.key.i in x
+						x.n--
+						Delete(x.c,k)
+					else 
+						x.key.i.left_child = merge(x.c,x.key.i,rs)
+						x.key.i-1.left_child = x.key.i.left_child
+						delete x.key.i in x
+						x.n--
+						Delete(x.c,k)
+					end
+				end
+			else
+				Delete(x.c,k)
+			end
+		end
+	end
+end
                     
 
 
